@@ -41,5 +41,18 @@ document.addEventListener('DOMContentLoaded', () => {
   ]
   
   const theShapes = [lShape, zShape, tShape, sqShape, iShape]
+
+  let currentPosition = 4
+  let current = theShapes[0][0]
+
+
+  function draw() {
+    current.forEach(index => {
+      squares[currentPosition + index].classList.add('shape')
+    })
+  }
+
+  draw()
+
 })
 
