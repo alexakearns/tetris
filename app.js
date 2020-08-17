@@ -43,19 +43,46 @@ document.addEventListener('DOMContentLoaded', () => {
   const theShapes = [lShape, zShape, tShape, sqShape, iShape]
 
   let currentPosition = 4
+  let currentRotation = 0
 
   let random = Math.floor(Math.random()*theShapes.length)
 
-  let current = theShapes[0][0]
+  let current = theShapes[random][currentRotation]
 
-
+  // add shape to div
   function draw() {
     current.forEach(index => {
       squares[currentPosition + index].classList.add('shape')
     })
   }
 
-  draw()
+  // remove shape from div
+  function undraw() {
+    current.forEach(index => {
+      squares[currentPosition + index].classList.remove('shape')
+    })
+  }
+
+  // make shape move down each second
+  timerId = setInterval(moveDown, 1000)
+
+  function moveDown() {
+    undraw()
+    currentPosition += width
+    draw()
+    freeze()
+  }
+
+  function freeze() {
+    if(current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
+      current.forEach(index => squares[currentPosition + index].classList.add('taken'))
+      random = Math.floor(Math.random() * theShapes.length)
+      current = theShapes[random][currentRotation]
+      currentPosition = 4
+      draw()
+    }
+  }
+
 
 })
 
