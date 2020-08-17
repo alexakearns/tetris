@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if(e.keyCode === 37) {
       moveLeft()
     } else if (e.keyCode === 38) {
-      //rotate()
+      rotate()
     } else if (e.keyCode === 39) {
       moveRight()
     } else if (e.keyCode === 40) {
@@ -98,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  //rule to allow shape to move left until reaches edge of grid
   function moveLeft() {
     undraw()
     const atLeftEdge = current.some(index => (currentPosition + index) % width === 0)
@@ -120,6 +119,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
       currentPosition -= 1
     }
+    draw()
+  }
+
+  function rotate() {
+    undraw()
+    currentRotation ++
+
+    if(currentRotation === current.length) {
+      currentRotation = 0
+    }
+    current = theShapes[random][currentRotation]
     draw()
   }
 
