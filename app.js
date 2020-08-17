@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const ScoreDisplay = document.querySelector('#score')
   const StartBtn = document.querySelector('#start-btn')
   const width = 10
+  let nextRandom = 0
 
   const lShape= [
     [1, width+1, width*2+1, 2],
@@ -91,10 +92,12 @@ document.addEventListener('DOMContentLoaded', () => {
   function freeze() {
     if(current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
       current.forEach(index => squares[currentPosition + index].classList.add('taken'))
-      random = Math.floor(Math.random() * theShapes.length)
+      random = nextRandom
+      nextRandom = Math.floor(Math.random() * theShapes.length)
       current = theShapes[random][currentRotation]
       currentPosition = 4
       draw()
+      displayShape()
     }
   }
 
@@ -131,6 +134,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     current = theShapes[random][currentRotation]
     draw()
+  }
+
+  const displaySquares = document.querySelectorAll('.mini-grid div')
+  const displayWidth = 4
+  let displayIndex = 0
+  
+
+  const shapeUpNext = [
+    [1, displayWidth+1, displayWidth*2+1, 2],
+    [displayWidth*2, displayWidth+1, displayWidth*2+1, displayWidth+2],
+    [displayWidth, 1, displayWidth+1, displayWidth+2],
+    [0, displayWidth, 1, displayWidth+1],
+    [1, displayWidth+1, displayWidth*2+1, displayWidth*3+1]
+  ]
+
+  function displayShape() {
+    displaySquares.forEach(square => {
+      square.classList.remove('shape')
+    })
+    shapeUpNext[nextRandom].forEach(index => {
+      displaySquares[displayIndex + index].classList.add('shape')
+    })
   }
 
 })
