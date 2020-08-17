@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let nextRandom = 0;
   let timerId;
   let score = 0;
+  const colors = ["blue", "purple", "lime", "black", "white"];
 
   const lShape = [
     [1, width + 1, width * 2 + 1, 2],
@@ -56,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function draw() {
     current.forEach((index) => {
       squares[currentPosition + index].classList.add("shape");
+      squares[currentPosition + index].style.backgroundColor = colors[random];
     });
   }
 
@@ -63,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function undraw() {
     current.forEach((index) => {
       squares[currentPosition + index].classList.remove("shape");
+      squares[currentPosition + index].style.backgroundColor = "";
     });
   }
 
@@ -160,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const displaySquares = document.querySelectorAll(".mini-grid div");
   const displayWidth = 4;
-  let displayIndex = 0;
+  const displayIndex = 0;
 
   const shapeUpNext = [
     [1, displayWidth + 1, displayWidth * 2 + 1, 2],
@@ -178,9 +181,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function displayShape() {
     displaySquares.forEach((square) => {
       square.classList.remove("shape");
+      square.style.backgroundColor = "";
     });
     shapeUpNext[nextRandom].forEach((index) => {
       displaySquares[displayIndex + index].classList.add("shape");
+      displaySquares[displayIndex + index].style.backgroundColor =
+        colors[nextRandom];
     });
   }
 
@@ -217,6 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
         row.forEach((index) => {
           squares[index].classList.remove("taken");
           squares[index].classList.remove("shape");
+          squares[index].style.backgroundColor = "";
         });
         const squaresRemoved = squares.splice(i, width);
         squares = squaresRemoved.concat(squares);
