@@ -66,6 +66,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // make shape move down each second
   timerId = setInterval(moveDown, 1000)
 
+  // assign functions to keycodes
+  function control(e) {
+    if(e.keyCode === 37) {
+      moveLeft()
+    }
+  }
+
+  document.addEventListener('keyup', control)
+
   function moveDown() {
     undraw()
     currentPosition += width
