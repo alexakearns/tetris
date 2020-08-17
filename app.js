@@ -43,6 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const theShapes = [lShape, zShape, tShape, sqShape, iShape]
 
   let currentPosition = 4
+
+  let random = Math.floor(Math.random()*theShapes.length)
+
   let current = theShapes[0][0]
 
 
