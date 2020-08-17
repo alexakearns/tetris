@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let nextRandom = 0;
   let timerId;
   let score = 0;
-  const colors = ["blue", "purple", "lime", "black", "white"];
+  const colors = ["blue", "purple", "orange", "red", "grey"];
 
   const lShape = [
     [1, width + 1, width * 2 + 1, 2],
