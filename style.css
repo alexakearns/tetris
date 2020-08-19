@@ -1,3 +1,17 @@
+body {
+  text-align: center;
+  font-family: "Tetris";
+}
+
+@font-face {
+  font-family: 'Tetris';
+  src: url('./FontsFree-Net-Tetris.ttf');
+}
+
+h1 {
+  font-family: 'Tetris';
+}
+
 .container {
   display: flex;
 }
@@ -17,6 +31,11 @@
 
 .shape {
   background-color: blueviolet;
+}
+
+#start-btn {
+  font-family: "Tetris";
+  background-color: ;
 }
 
 .mini-grid {

@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let nextRandom = 0;
   let timerId;
   let score = 0;
-  const colors = ["blue", "purple", "orange", "red", "grey"];
+  const colors = ["#3F88C5", "#A74482", "#FFBA08", "#D00000", "#1C3144"];
 
   const lShape = [
     [1, width + 1, width * 2 + 1, 2],
@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
       timerId = null;
     } else {
       draw();
-      timerId = setInterval(moveDown, 200);
+      timerId = setInterval(moveDown, 1000);
       nextRandom = Math.floor(Math.random() * theShapes.length);
       displayShape();
     }
